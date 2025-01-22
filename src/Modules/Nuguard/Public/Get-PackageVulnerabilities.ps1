@@ -11,9 +11,11 @@ function Get-PackageVulnerabilities {
         # Run dotnet list package --vulnerable and capture output
         $vulnerabilityReport = dotnet list $ProjectPath package --vulnerable | Out-String
 
+
+
         # If no vulnerabilities found, return early
-        if ($vulnerabilityReport -match "No vulnerable packages were found.") {
-            Write-Host "✅ No vulnerable packages were found." -ForegroundColor Green
+        if ($vulnerabilityReport -match "has no vulnerable packages given the current sources") {
+            Write-Host $vulnerabilityReport -ForegroundColor Green
             return $null
         }
 
