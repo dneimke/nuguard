@@ -1,0 +1,21 @@
+# Documentation files
+docs/
+
+# .NET build output
+bin/
+obj/
+
+# PowerShell module files
+*.psd1
+*.psm1.tests.ps1
+
+# VS Code settings
+.vscode/
+
+# Operating System Files
+.DS_Store
+Thumbs.db
+
+# Test results
+TestResults/
+coverage/
