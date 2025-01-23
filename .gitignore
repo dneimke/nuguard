@@ -5,10 +5,6 @@ docs/four*
 bin/
 obj/
 
-# PowerShell module files
-*.psd1
-*.psm1.tests.ps1
-
 # VS Code settings
 .vscode/
 
