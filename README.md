@@ -103,6 +103,16 @@ if ($results) {
 }
 ```
 
+## Documentation
+
+Detailed documentation is available in the `/docs` directory:
+
+- [Project Structure](docs/project-structure.md) - Overview of the codebase organization
+- [Azure Pipeline Usage](docs/azure-pipeline-usage.md) - Guide for integrating with Azure DevOps
+- [Configuration Guide](docs/configuration.md) - Details on `nuguard-config.json` settings
+
+For configuration examples and best practices, see the [example configurations](docs/configuration.md#examples).
+
 ## Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
