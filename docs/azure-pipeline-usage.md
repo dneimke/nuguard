@@ -24,7 +24,7 @@ steps:
     targetType: 'inline'
     script: |
       # Clone NuGuard repository
-      git clone https://github.com/yourusername/nuguard.git
+      git clone https://github.com/dneimke/nuguard.git
 
       # Import module
       Import-Module .\nuguard\src\Modules\Nuguard\Nuguard.psm1 -Force
@@ -47,7 +47,7 @@ steps:
 
 ## Usage Instructions
 
-**1. Add the Pipeline**
+### 1. Add the Pipeline
 
 - Create a new pipeline in Azure DevOps
 - Choose "Azure Repos Git" as your source
@@ -55,7 +55,7 @@ steps:
 - Choose "Existing Azure Pipelines YAML file"
 - Select the path to your pipeline YAML
 
-**2. Configure Variables (Optional)**
+### 2. Configure Variables (Optional)
 
 ```yaml
 variables:
@@ -63,7 +63,7 @@ variables:
   projectPath: '**/*.csproj'  # Path pattern to scan
 ```
 
-**3. Advanced Configuration**
+### 3. Advanced Configuration
 
 You can enhance the pipeline by adding custom conditions or thresholds:
 
