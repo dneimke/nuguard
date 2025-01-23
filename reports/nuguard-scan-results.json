@@ -1,0 +1,17 @@
+{
+  "projects": [
+    {
+      "severity": "High",
+      "name": "MyProject1",
+      "vulnerabilities": null,
+      "path": "src/MyProject1/MyProject1.csproj"
+    },
+    {
+      "severity": "Critical",
+      "name": "MyProject2",
+      "vulnerabilities": null,
+      "path": "src/MyProject2/MyProject2.sln"
+    }
+  ],
+  "scanDate": "2025-01-24T05:49:53.4907347+10:30"
+}

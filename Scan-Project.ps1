@@ -1,34 +1,11 @@
-[CmdletBinding()]
-param(
-    [Parameter(Position = 0)]
-    [string]$ProjectPath = ".",
+# Import the module
+Import-Module .\src\Modules\Nuguard\Nuguard.psm1
 
-    [Parameter(Position = 1)]
-    [ValidateSet('Critical', 'High', 'Moderate', 'Low', 'All')]
-    [string]$MinimumSeverity = 'All'
-)
+# Run scan using config file
+$results = Invoke-NuguardScan -ConfigPath "nuguard-config.json"
 
-# Ensure we're in the correct directory (where the script is located)
-$scriptPath = Split-Path -Parent $MyInvocation.MyCommand.Path
-Set-Location $scriptPath
-
-# Import the Nuguard module
-$modulePath = Join-Path $scriptPath "src/Modules/Nuguard/Nuguard.psm1"
-if (Test-Path $modulePath) {
-    Import-Module $modulePath -Force
-}
-else {
-    Write-Error "Could not find NuguardModule.psm1. Ensure it exists in the same directory as this script."
-    exit 1
-}
-
-Write-Host "🔍 Scanning project for vulnerabilities..." -ForegroundColor Cyan
-Write-Host "Project path: $ProjectPath" -ForegroundColor Gray
-Write-Host "Minimum severity: $MinimumSeverity" -ForegroundColor Gray
-Write-Host ""
-
-# Run the vulnerability scan
-$results = Get-PackageVulnerabilities -ProjectPath $ProjectPath -MinimumSeverity $MinimumSeverity
+# Run scan with custom output path
+# $results = Invoke-NuguardScan -ConfigPath "nuguard-config.json" -OutputPath "custom-reports"
 
 # Add summary at the end
 if ($results) {
