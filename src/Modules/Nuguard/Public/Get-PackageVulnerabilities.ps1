@@ -1,5 +1,5 @@
 
-function Get-PackageVulnerabilities {
+function Get-DotnetVulnerabilities {
     param(
         [Parameter(Mandatory = $true)]
         [string]$ProjectPath,
@@ -89,4 +89,4 @@ function Get-PackageVulnerabilities {
 }
 
 # Export the function
-Export-ModuleMember -Function Get-PackageVulnerabilities
+Export-ModuleMember -Function Get-DotnetVulnerabilities

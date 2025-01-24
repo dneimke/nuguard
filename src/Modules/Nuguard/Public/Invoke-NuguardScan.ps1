@@ -31,9 +31,17 @@ function Invoke-NuguardScan {
             $config.defaultSettings.minimumSeverity
         }
 
-        $vulnerabilities = Get-PackageVulnerabilities `
-            -ProjectPath $project.path `
-            -MinimumSeverity $severity
+        $vulnerabilities = switch ($project.type) {
+            'npm' {
+                Get-NpmVulnerabilities -ProjectPath $project.path -MinimumSeverity $severity
+            }
+            'dotnet' {
+                Get-DotnetVulnerabilities -ProjectPath $project.path -MinimumSeverity $severity
+            }
+            default {
+                Get-DotnetVulnerabilities -ProjectPath $project.path -MinimumSeverity $severity
+            }
+        }
 
         $results.projects += @{
             name = $project.name

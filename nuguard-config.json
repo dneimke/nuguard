@@ -4,12 +4,14 @@
         {
             "name": "MyProject1",
             "path": "src/MyProject1/MyProject1.csproj",
+            "type": "dotnet",
             "minimumSeverity": "High"
         },
         {
-            "name": "MyProject2",
-            "path": "src/MyProject2/MyProject2.sln",
-            "minimumSeverity": "Critical"
+            "name": "MyNodeApp",
+            "path": "src/MyNodeApp",
+            "type": "npm",
+            "minimumSeverity": "High"
         }
     ],
     "defaultSettings": {

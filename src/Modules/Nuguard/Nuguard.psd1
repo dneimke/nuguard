@@ -5,7 +5,7 @@
     Author = 'Darren Neimke'
     Description = 'A PowerShell module for scanning .NET projects for vulnerable NuGet packages'
     PowerShellVersion = '5.1'
-    FunctionsToExport = @('Get-PackageVulnerabilities', 'Invoke-NuguardScan')
+    FunctionsToExport = @('Get-DotnetVulnerabilities', 'Get-NpmVulnerabilities', 'Invoke-NuguardScan')
     CmdletsToExport = @()
     VariablesToExport = '*'
     AliasesToExport = @()
