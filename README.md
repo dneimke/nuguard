@@ -36,10 +36,10 @@ Import-Module ./NuguardModule
 
 ```powershell
 # Scan current project for all vulnerabilities
-Get-PackageVulnerabilities -ProjectPath .
+Get-DotnetVulnerabilities -ProjectPath .
 
 # Scan specific project for only Critical and High severity vulnerabilities
-Get-PackageVulnerabilities -ProjectPath "C:\path\to\project" -MinimumSeverity High
+Get-DotnetVulnerabilities -ProjectPath "C:\path\to\project" -MinimumSeverity High
 ```
 
 ### Using the Convenience Script
@@ -92,10 +92,10 @@ Total vulnerabilities: 2
 
 ## Integration
 
-The `Get-PackageVulnerabilities` function returns structured data that can be used in pipelines or scripts:
+The `Get-DotnetVulnerabilities` function returns structured data that can be used in pipelines or scripts:
 
 ```powershell
-$results = Get-PackageVulnerabilities -ProjectPath .
+$results = Get-DotnetVulnerabilities -ProjectPath .
 if ($results) {
     $criticalVulnerabilities = $results |
         ForEach-Object { $_.Vulnerabilities } |
