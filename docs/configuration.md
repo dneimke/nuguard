@@ -40,8 +40,16 @@ The configuration file contains the following main sections:
 Each project entry in `projectPaths` can include:
 
 - `name`: Friendly name for the project
-- `path`: Relative path to .csproj or .sln file
+- `path`: Relative path to project file or directory
+- `type`: Project type (`dotnet` or `npm`), defaults to `dotnet`
 - `minimumSeverity`: Override severity level for this project
+
+### Project Types
+
+NuGuard supports scanning different types of projects:
+
+- `dotnet`: .NET projects (*.csproj, *.sln)
+- `npm`: Node.js projects (package.json)
 
 ### Default Settings
 
@@ -58,11 +66,13 @@ Each project entry in `projectPaths` can include:
         {
             "name": "WebAPI",
             "path": "src/WebAPI/WebAPI.csproj",
+            "type": "dotnet",
             "minimumSeverity": "Critical"
         },
         {
-            "name": "CoreLibrary",
-            "path": "src/Core/Core.csproj",
+            "name": "Frontend",
+            "path": "src/client",
+            "type": "npm",
             "minimumSeverity": "High"
         }
     ],

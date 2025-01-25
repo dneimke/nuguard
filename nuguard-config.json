@@ -5,7 +5,7 @@
             "name": "Matchlib.com",
             "path": "C:\\repos\\azops\\PerformanceAnalyst",
             "type": "dotnet",
-            "minimumSeverity": "High"
+            "minimumSeverity": "Moderate"
         },
         {
             "name": "MyNodeApp",
