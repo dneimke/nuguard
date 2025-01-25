@@ -1,0 +1,23 @@
+{
+	"name": "NuGuard Development",
+	"dockerFile": "Dockerfile",
+	"features": {
+		"ghcr.io/devcontainers/features/dotnet:1": {},
+		"ghcr.io/devcontainers/features/github-cli:1": {},
+		"ghcr.io/devcontainers/features/powershell:1": {}
+	},
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"ms-dotnettools.csharp",
+				"ms-dotnettools.dotnet-interactive-vscode",
+				"formulahendry.dotnet-test-explorer",
+				"streetsidesoftware.code-spell-checker",
+				"eamodio.gitlens",
+				"github.vscode-github-actions",
+				"ms-vscode.powershell"
+			]
+		}
+	},
+	"remoteUser": "vscode"
+}
