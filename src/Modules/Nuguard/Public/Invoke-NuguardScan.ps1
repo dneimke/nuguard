@@ -3,7 +3,6 @@ function Invoke-NuguardScan {
     param(
         [Parameter(Mandatory = $false)]
         [string]$ConfigPath = "nuguard-config.json",
-
         [Parameter(Mandatory = $false)]
         [string]$OutputPath = $null
     )
@@ -31,17 +30,12 @@ function Invoke-NuguardScan {
             $config.defaultSettings.minimumSeverity
         }
 
-        $vulnerabilities = switch ($project.type) {
-            'npm' {
-                Get-NpmVulnerabilities -ProjectPath $project.path -MinimumSeverity $severity
-            }
-            'dotnet' {
-                Get-DotnetVulnerabilities -ProjectPath $project.path -MinimumSeverity $severity
-            }
-            default {
-                Get-DotnetVulnerabilities -ProjectPath $project.path -MinimumSeverity $severity
-            }
-        }
+        $projectType = if ($project.type) { $project.type } else { 'dotnet' }
+
+        $vulnerabilities = Invoke-VulnerabilityScanner `
+            -ProjectPath $project.path `
+            -ProjectType $projectType `
+            -MinimumSeverity $severity
 
         $results.projects += @{
             name = $project.name
@@ -51,19 +45,17 @@ function Invoke-NuguardScan {
         }
     }
 
-    # Determine output path
+    # Handle output
     $outputPath = if ($OutputPath) {
         $OutputPath
     } else {
         $config.defaultSettings.outputPath
     }
 
-    # Ensure output directory exists
     if (-not (Test-Path $outputPath)) {
         New-Item -Path $outputPath -ItemType Directory -Force
     }
 
-    # Save results
     $outputFile = Join-Path $outputPath "nuguard-scan-results.json"
     $results | ConvertTo-Json -Depth 10 | Out-File $outputFile
 
