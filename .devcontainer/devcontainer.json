@@ -58,6 +58,7 @@
         "pester.runTestsInNewProcess": true,
         "pester.outputViewLogLimit": 10000,
         "pester.debugOnFailure": true,
+        "powershell.pester.codeLens": true,
         "powershell.pester.useLegacyCodeLens": false,
         "powershell.pester.debugOutputVerbosity": "Diagnostic",
 

@@ -18,7 +18,7 @@
     "suggestionDisplayStyle": "inlineSuggestions"
   },
   "powershell.pester.useLegacyCodeLens": false,
-  "powershell.pester.codeLens": true,
+  "powershell.pester.codeLens": false,
   "powershell.pester.debugOutputVerbosity": "Diagnostic",
   "powershell.pester.testFilenamePattern": "*.Tests.ps1"
 }
