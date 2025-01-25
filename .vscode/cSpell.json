@@ -2,6 +2,8 @@
   "version": "0.2",
   "language": "en",
   "words": [
+    "azops",
+    "Cupertino",
     "dbaeumer",
     "devcontainer",
     "devcontainers",
@@ -9,8 +11,10 @@
     "eamodio",
     "esbenp",
     "formulahendry",
+    "Matchlib",
     "Nuguard",
     "preconfigured",
+    "pubspec",
     "pwsh"
   ],
   "ignoreWords": ["noninteractive"],
