@@ -8,6 +8,12 @@ function Get-PubVulnerabilities {
         [string]$MinimumSeverity = 'All'
     )
 
+    # Ensure required modules are available
+    Initialize-NuguardDependencies
+
+    # Import YAML module
+    Import-Module powershell-yaml
+
     $vulnerabilities = @()
     $pubspecPath = Join-Path $ProjectPath "pubspec.yaml"
 
@@ -28,11 +34,13 @@ function Get-PubVulnerabilities {
                 # Query OSV database for vulnerabilities
                 $osvVulns = Get-OsvVulnerabilities -Package $packageName -Version $version -Ecosystem "Pub"
 
+                $tempSeverity = "UNKNOWN"
+                # $tempSeverity = $vuln.severity
                 foreach ($vuln in $osvVulns) {
-                    if ((Test-VulnerabilitySeverity -Severity $vuln.severity -MinimumSeverity $MinimumSeverity)) {
+                    if ((Test-VulnerabilitySeverity -Severity $tempSeverity -MinimumSeverity $MinimumSeverity)) {
                         $vulnerabilities += @{
                             package = $packageName
-                            version = $version
+                            version = $tempSeverity
                             severity = $vuln.severity
                             description = $vuln.description
                             advisory = $vuln.advisory_url
@@ -43,7 +51,7 @@ function Get-PubVulnerabilities {
         }
     }
     catch {
-        Write-Error "Error scanning Pub packages: $_"
+        throw "Error scanning Pub packages: $_"
     }
 
     return $vulnerabilities

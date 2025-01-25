@@ -33,12 +33,8 @@ function Get-NpmVulnerabilities {
 
         # Filter by severity
         if ($MinimumSeverity -ne 'All') {
-            $severityLevels = @('Critical', 'High', 'Moderate', 'Low')
-            $minimumIndex = $severityLevels.IndexOf($MinimumSeverity)
-
             $vulnerabilities = $vulnerabilities | Where-Object {
-                $severityIndex = $severityLevels.IndexOf($_.Vulnerabilities[0].Severity)
-                $severityIndex -le $minimumIndex
+                Test-VulnerabilitySeverity -Severity $_.Vulnerabilities[0].Severity.ToUpper() -MinimumSeverity $MinimumSeverity
             }
         }
 

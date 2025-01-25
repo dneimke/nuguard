@@ -1,16 +1,11 @@
 @{
     RootModule = 'Nuguard.psm1'
     ModuleVersion = '0.1.0'
-    GUID = [System.Guid]::NewGuid().ToString()
+    GUID = 'f1b1b3b4-0b3b-4b3b-8b3b-0b3b0b3b0b3b'
     Author = 'Darren Neimke'
     Description = 'A PowerShell module for scanning .NET projects for vulnerable NuGet packages'
     PowerShellVersion = '5.1'
-    FunctionsToExport = @(
-        'Get-DotnetVulnerabilities',
-        'Get-NpmVulnerabilities',
-        'Invoke-VulnerabilityScanner',
-        'Invoke-NuguardScan'
-    )
+    FunctionsToExport = '*'
     CmdletsToExport = @()
     VariablesToExport = '*'
     AliasesToExport = @()

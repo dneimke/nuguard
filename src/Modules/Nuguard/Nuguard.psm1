@@ -10,4 +10,7 @@ foreach ($import in @($Public + $Private)) {
     }
 }
 
+# Initialize module dependencies
+Initialize-NuguardDependencies
+
 Export-ModuleMember -Function $Public.BaseName

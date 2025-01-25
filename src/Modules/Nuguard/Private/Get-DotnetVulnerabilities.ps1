@@ -1,4 +1,3 @@
-
 function Get-DotnetVulnerabilities {
     param(
         [Parameter(Mandatory = $true)]
@@ -46,14 +45,10 @@ function Get-DotnetVulnerabilities {
 
         # Filter by minimum severity if specified
         if ($MinimumSeverity -ne 'All') {
-            $severityLevels = @('Critical', 'High', 'Moderate', 'Low')
-            $minimumIndex = $severityLevels.IndexOf($MinimumSeverity)
-
             $vulnerabilities = $vulnerabilities | ForEach-Object {
                 $package = $_
                 $package.Vulnerabilities = $package.Vulnerabilities | Where-Object {
-                    $severityIndex = $severityLevels.IndexOf($_.Severity)
-                    $severityIndex -le $minimumIndex
+                    Test-VulnerabilitySeverity -Severity $_.Severity.ToUpper() -MinimumSeverity $MinimumSeverity
                 }
                 if ($package.Vulnerabilities.Count -gt 0) {
                     $package

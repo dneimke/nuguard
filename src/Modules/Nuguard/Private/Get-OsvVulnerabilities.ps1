@@ -3,7 +3,7 @@ function Get-OsvVulnerabilities {
     param(
         [Parameter(Mandatory = $true)]
         [string]$Package,
-        [Parameter(Mandatory = $true)]
+
         [string]$Version,
         [Parameter(Mandatory = $true)]
         [string]$Ecosystem
