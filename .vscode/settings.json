@@ -7,5 +7,14 @@
     "markdown": true,
     "powershell": true
   },
-  "github.copilot.editor.enableAutoCompletions": true
+  "github.copilot.editor.enableAutoCompletions": true,
+  "github.copilot.advanced": {
+    "documentationPaths": [
+      "./docs/**/*.md",
+      "./README.md",
+      "./.github/copilot/instructions.md"
+    ],
+    "indentationMode": "keepCurrent",
+    "suggestionDisplayStyle": "inlineSuggestions"
+  }
 }
