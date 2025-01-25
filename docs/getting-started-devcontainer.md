@@ -22,7 +22,7 @@ Our devcontainer comes preconfigured with:
 1. Clone the repository:
 
    ```pwsh
-   git clone <repository-url>
+   git clone https://github.com/dneimke/nuguard.git
    cd nuguard
    ```
 
