@@ -96,33 +96,33 @@ Create `nuguard-config.json` in your project root to customize behavior:
 
 ```json
 {
-    "version": "1.0",
-    "projectPaths": [
-        {
-            "name": "MyDotNetApp",
-            "path": "src/MyDotNetApp",
-            "type": "dotnet",
-            "minimumSeverity": "Moderate"
-        },
-        {
-            "name": "MyNodeApp",
-            "path": "src/MyNodeApp",
-            "type": "npm",
-            "minimumSeverity": "High"
-        }
-    ],
-    "defaultSettings": {
-        "minimumSeverity": "High",
-        "outputPath": "reports",
-        "failOnFindings": true
+  "version": "1.0",
+  "projectPaths": [
+    {
+      "name": "MyDotNetApp",
+      "path": "src/MyDotNetApp",
+      "type": "dotnet",
+      "minimumSeverity": "Moderate"
+    },
+    {
+      "name": "MyNodeApp",
+      "path": "src/MyNodeApp",
+      "type": "npm",
+      "minimumSeverity": "High"
     }
+  ],
+  "defaultSettings": {
+    "minimumSeverity": "High",
+    "outputPath": "reports",
+    "failOnFindings": true
+  }
 }
 ```
 
 ## Documentation
 
-- [Getting Started Guide](docs/getting-started.md)
-- [CI/CD Integration](docs/ci-cd.md)
+- [Getting Started Guide](docs/quick-start.md)
+- [CI/CD Integration](docs/azure-devops-pipeline.md)
 - [Advanced Configuration](docs/configuration.md)
 
 ## Contributing
