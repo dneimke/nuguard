@@ -50,6 +50,7 @@ NuGuard supports scanning different types of projects:
 
 - `dotnet`: .NET projects (*.csproj, *.sln)
 - `npm`: Node.js projects (package.json)
+- `pub`: Dart/Flutter projects (pubspec.yaml)
 
 ### Default Settings
 
@@ -74,6 +75,12 @@ NuGuard supports scanning different types of projects:
             "path": "src/client",
             "type": "npm",
             "minimumSeverity": "High"
+        },
+        {
+            "name": "MobileApp",
+            "path": "src/mobile",
+            "type": "pub",
+            "minimumSeverity": "Medium"
         }
     ],
     "defaultSettings": {
