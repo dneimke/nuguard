@@ -1,34 +1,35 @@
 {
-	"name": "NuGuard Development",
-	"dockerFile": "Dockerfile",
-	"features": {
-		"ghcr.io/devcontainers/features/dotnet:1": {
-			"version": "7.0"
-		},
-		"ghcr.io/devcontainers/features/github-cli:1": {},
-		"ghcr.io/devcontainers/features/powershell:1": {},
-		"ghcr.io/devcontainers/features/node:1": {
-			"version": "lts"
-		}
-	},
-	"customizations": {
-		"vscode": {
-			"extensions": [
-				"ms-dotnettools.csharp",
-				"ms-dotnettools.dotnet-interactive-vscode",
-				"formulahendry.dotnet-test-explorer",
-				"streetsidesoftware.code-spell-checker",
-				"eamodio.gitlens",
-				"github.vscode-github-actions",
-				"ms-vscode.powershell",
-				"ms-azuretools.vscode-docker",
-				"dbaeumer.vscode-eslint",
-				"esbenp.prettier-vscode"
-			],
-			"settings": {
-				"terminal.integrated.defaultProfile.linux": "pwsh"
-			}
-		}
-	},
-	"remoteUser": "vscode"
+  "name": "NuGuard Development",
+  "dockerFile": "Dockerfile",
+  "features": {
+    "ghcr.io/devcontainers/features/dotnet:1": {
+      "version": "7.0"
+    },
+    "ghcr.io/devcontainers/features/github-cli:1": {},
+    "ghcr.io/devcontainers/features/powershell:1": {},
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "lts"
+    }
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-dotnettools.csharp",
+        "ms-dotnettools.dotnet-interactive-vscode",
+        "formulahendry.dotnet-test-explorer",
+        "streetsidesoftware.code-spell-checker",
+        "eamodio.gitlens",
+        "github.vscode-github-actions",
+        "ms-vscode.powershell",
+        "ms-azuretools.vscode-docker",
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "streetsidesoftware.code-spell-checker"
+      ],
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "pwsh"
+      }
+    }
+  },
+  "remoteUser": "vscode"
 }
