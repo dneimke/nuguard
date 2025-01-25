@@ -41,7 +41,7 @@ Each project entry in `projectPaths` can include:
 
 - `name`: Friendly name for the project
 - `path`: Relative path to project file or directory
-- `type`: Project type (`dotnet` or `npm`), defaults to `dotnet`
+- `type`: Project type (`dotnet` or `npm` or `pub`), defaults to `dotnet`
 - `minimumSeverity`: Override severity level for this project
 
 ### Project Types
