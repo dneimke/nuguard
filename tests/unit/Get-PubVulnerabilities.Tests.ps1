@@ -1,5 +1,5 @@
 BeforeAll {
-    $modulePath = Join-Path $PSScriptRoot "../../../src/Modules/Nuguard/Nuguard.psd1"
+    $modulePath = Join-Path $PSScriptRoot "../../src/Modules/Nuguard/Nuguard.psd1"
     Import-Module $modulePath -Force -Verbose
 
     # Verify function is loaded
