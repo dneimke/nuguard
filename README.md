@@ -1,122 +1,113 @@
 # Nuguard
 
-A PowerShell module for scanning .NET projects for vulnerable NuGet packages. Provides enhanced reporting and filtering capabilities over the standard `dotnet list package --vulnerable` command.
+A powerful PowerShell module for scanning projects for vulnerable package dependencies across multiple ecosystems. While starting with .NET/NuGet, Nuguard provides a unified interface for vulnerability scanning across npm, NuGet, and other package providers. Get rich reporting, filtering, and integration features with a consistent experience regardless of your project type.
 
 ## Features
 
-- 🔍 Scan .NET projects for vulnerable NuGet packages
-- 🎯 Filter vulnerabilities by severity level
-- 🎨 Colorized console output for better readability
-- 📊 Summary reports of findings
-- 🔄 Returns structured data for pipeline integration
+- 🔍 Deep scan for vulnerable NuGet packages across solution or project files
+- 🎯 Customizable severity filtering (Critical, High, Moderate, Low)
+- 🎨 Clear, colorized console output
+- 📊 Detailed vulnerability reports with advisory links
+- 🔄 Structured data output for CI/CD integration
+- ⚡ Fast parallel scanning for solutions with multiple projects
 
-## Prerequisites
+## Quick Start
 
-- .NET SDK 6.0 or later
-- PowerShell 5.1 or later
+### Option 1: Using DevContainer (Recommended)
 
-## Installation
+The fastest way to get started is using our pre-configured development container:
 
-1. Clone this repository:
+1. Install [VS Code](https://code.visualstudio.com/) and the [Dev Containers extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)
+2. Clone and open the repository:
+   ```bash
+   git clone https://github.com/dneimke/nuguard.git
+   code nuguard
+   ```
+3. Click "Reopen in Container" when prompted, or run `Ctrl/Cmd + Shift + P` → "Dev Containers: Reopen in Container"
+
+The container comes with:
+- .NET SDK pre-installed
+- PowerShell and required modules
+- Pre-configured VS Code settings
+- All dependencies ready to go
+
+### Option 2: Traditional Installation
+
+If you prefer not to use DevContainers:
+
+1. Ensure prerequisites are installed:
+   ```powershell
+   dotnet --version     # Should be 6.0 or higher
+   $PSVersionTable.PSVersion  # Should be 5.1 or higher
+   ```
+
+2. Install Nuguard:
+   ```powershell
+   Install-Module -Name Nuguard -Scope CurrentUser
+   ```
+
+### Running Your First Scan
 
 ```powershell
-git clone https://github.com/dneimke/nuguard.git
-cd nuguard
+# Scan current directory
+Get-DotnetVulnerabilities .
+
+# Or scan with minimum severity
+Get-DotnetVulnerabilities . -MinimumSeverity High
 ```
 
-2. Import the module:
+## Common Usage Examples
 
 ```powershell
-Import-Module ./NuguardModule
+# Scan a specific solution
+Get-DotnetVulnerabilities -ProjectPath "./MySolution.sln"
+
+# Export results to JSON
+Get-DotnetVulnerabilities . | ConvertTo-Json > vulnerabilities.json
+
+# Pipeline integration example
+$vulns = Get-DotnetVulnerabilities -MinimumSeverity Critical
+if ($vulns.Count -gt 0) {
+    throw "Critical vulnerabilities found!"
+}
 ```
 
-## Usage
+## Troubleshooting
 
-### Using the PowerShell Module Directly
+Common issues and solutions:
 
-```powershell
-# Scan current project for all vulnerabilities
-Get-DotnetVulnerabilities -ProjectPath .
+- **Error: Package source not found**
+  Make sure you have access to nuget.org or your private feed
 
-# Scan specific project for only Critical and High severity vulnerabilities
-Get-DotnetVulnerabilities -ProjectPath "C:\path\to\project" -MinimumSeverity High
-```
+- **Scan taking too long**
+  Use `-SkipRestore` if packages are already restored
 
-### Using the Convenience Script
+- **No vulnerabilities shown**
+  Check if `-MinimumSeverity` matches your expectations
 
-```powershell
-# Basic scan of current directory
-.\Scan-Project.ps1
+## Configuration
 
-# Scan specific project
-.\Scan-Project.ps1 -ProjectPath "C:\path\to\project"
+Create `nuguard-config.json` in your project root to customize behavior:
 
-# Scan for only high and critical vulnerabilities
-.\Scan-Project.ps1 -MinimumSeverity High
-
-# Combine both options
-.\Scan-Project.ps1 -ProjectPath "C:\path\to\project" -MinimumSeverity Critical
-```
-
-## Severity Levels
-
-The module supports the following severity levels (from highest to lowest):
-
-- Critical
-- High
-- Moderate
-- Low
-- All (default)
-
-## Example Output
-
-```powershell
-🔍 Scanning project for vulnerabilities...
-Project path: C:\path\to\project
-Minimum severity: High
-
-❌ Vulnerable packages found:
-
-Package: Newtonsoft.Json [12.0.2]
-  [Critical] Remote Code Execution Vulnerability (CVE-2024-XXXXX)
-   └─ Advisory: https://github.com/advisories/...
-
-Package: System.Text.RegularExpressions [4.3.0]
-  [High] Denial of Service (CVE-2024-XXXXX)
-   └─ Advisory: https://github.com/advisories/...
-
-📊 Summary:
-Total vulnerable packages: 2
-Total vulnerabilities: 2
-```
-
-## Integration
-
-The `Get-DotnetVulnerabilities` function returns structured data that can be used in pipelines or scripts:
-
-```powershell
-$results = Get-DotnetVulnerabilities -ProjectPath .
-if ($results) {
-    $criticalVulnerabilities = $results |
-        ForEach-Object { $_.Vulnerabilities } |
-        Where-Object { $_.Severity -eq 'Critical' }
+```json
+{
+  "minimumSeverity": "High",
+  "excludePackages": ["Test.*"],
+  "excludeProjects": ["*Test*"],
+  "nugetSources": ["https://api.nuget.org/v3/index.json"]
 }
 ```
 
 ## Documentation
 
-Detailed documentation is available in the `/docs` directory:
-
-- [Project Structure](docs/project-structure.md) - Overview of the codebase organization
-- [Azure Pipeline Usage](docs/azure-pipeline-usage.md) - Guide for integrating with Azure DevOps
-- [Configuration Guide](docs/configuration.md) - Details on `nuguard-config.json` settings
-
-For configuration examples and best practices, see the [example configurations](docs/configuration.md#examples).
+- [Getting Started Guide](docs/getting-started.md)
+- [CI/CD Integration](docs/ci-cd.md)
+- [Advanced Configuration](docs/configuration.md)
 
 ## Contributing
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md).
 
 ## License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+MIT License - See [LICENSE](LICENSE) for details.
