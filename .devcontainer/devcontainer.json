@@ -29,10 +29,47 @@
         "github.copilot-chat",
         "github.copilot-labs",
         "bierner.markdown-mermaid",
-        "tomoyukim.vscode-mermaid-editor"
+        "tomoyukim.vscode-mermaid-editor",
+        "pspester.pester-test",
+        "TylerLeonhardt.vscode-pester-test-adapter",
+        "ryanstedman.pester-vscode"
       ],
       "settings": {
-        "terminal.integrated.defaultProfile.linux": "pwsh"
+        "terminal.integrated.defaultProfile.linux": "pwsh",
+        // PowerShell settings
+        "powershell.codeLens.enable": true,
+        "powershell.codeLens.references": true,
+        "powershell.codeLens.referencesCustomColor": "#b2dfdb",
+        "powershell.pester.codeLens": true,
+
+        // TypeScript/JavaScript settings
+        "typescript.referencesCodeLens.enabled": true,
+        "javascript.referencesCodeLens.enabled": true,
+
+        // Git settings
+        "gitlens.codeLens.enabled": true,
+
+        // Editor settings
+        "editor.codeLens": true,
+        "editor.codeLensFontFamily": "Consolas, 'Courier New', monospace",
+
+        // Pester Test Settings
+        "pester.autoRunOnSave": true,
+        "pester.runTestsInNewProcess": true,
+        "pester.outputViewLogLimit": 10000,
+        "pester.debugOnFailure": true,
+        "powershell.pester.useLegacyCodeLens": false,
+        "powershell.pester.debugOutputVerbosity": "Diagnostic",
+
+        // Test Explorer Settings
+        "testExplorer.gutterEnabled": true,
+        "testExplorer.codeLens": true,
+        "testExplorer.showCollapseAll": true,
+        "testExplorer.addToEditorContextMenu": true,
+
+        // PowerShell Test Settings
+        "powershell.buttons.showPanelMovementButtons": true,
+        "powershell.debugging.createTemporaryIntegratedConsole": true
       }
     }
   },
