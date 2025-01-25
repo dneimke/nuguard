@@ -1,6 +1,7 @@
 {
     "documentationLinks": {
         "security": "/docs/security.md",
-        "architecture": "/docs/architecture.md"
+        "architecture": "/docs/architecture.md",
+        "addScanner": "/docs/add-scanning-source.md"
     }
 }
