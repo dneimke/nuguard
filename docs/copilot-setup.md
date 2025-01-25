@@ -5,7 +5,9 @@ This workspace comes with GitHub Copilot preconfigured in the development contai
 ## Prerequisites
 
 You only need:
+
 1. An active GitHub Copilot subscription
+
    - Individual subscription, or
    - Access through your organization's subscription
    - Students can get GitHub Copilot for free through the [GitHub Student Developer Pack](https://education.github.com/pack)
@@ -35,3 +37,19 @@ If Copilot isn't working:
 4. Ensure you've accepted the Copilot terms of service
 
 Note: The GitHub Copilot and GitHub Copilot Chat extensions are automatically installed by the dev container configuration - you don't need to install them manually.
+
+## Copilot Optimization Tips
+
+### Inline Code Comments
+
+Use descriptive comments above functions to help Copilot understand:
+
+```powershell
+# Scans .NET project for vulnerable NuGet packages and returns vulnerability report
+# Parameters:
+# - ProjectPath: Path to .NET project/solution
+# - MinimumSeverity: Minimum severity level to report (Critical/High/Moderate/Low)
+function Get-DotnetVulnerabilities {
+    ...
+}
+```

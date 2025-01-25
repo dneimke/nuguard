@@ -26,7 +26,8 @@
         "esbenp.prettier-vscode",
         "streetsidesoftware.code-spell-checker",
         "github.copilot",
-        "github.copilot-chat"
+        "github.copilot-chat",
+        "github.copilot-labs"
       ],
       "settings": {
         "terminal.integrated.defaultProfile.linux": "pwsh"

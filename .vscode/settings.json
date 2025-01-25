@@ -1,4 +1,11 @@
 {
   "cSpell.enabled": true,
-  "cSpell.language": "en"
+  "cSpell.language": "en",
+  "github.copilot.enable": {
+    "*": true,
+    "plaintext": false,
+    "markdown": true,
+    "powershell": true
+  },
+  "github.copilot.editor.enableAutoCompletions": true
 }
