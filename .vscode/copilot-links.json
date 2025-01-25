@@ -1,7 +1,10 @@
 {
     "documentationLinks": {
-        "security": "/docs/security.md",
+        "addScanner": "/docs/add-scanning-source.md",
         "architecture": "/docs/architecture.md",
-        "addScanner": "/docs/add-scanning-source.md"
+        "gettingStarted": "/docs/getting-started.md",
+        "projectStructure": "/docs/project-structure.md",
+        "security": "/docs/security.md",
+        "testing": "/docs/testing.md"
     }
 }

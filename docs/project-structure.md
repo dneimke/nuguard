@@ -11,10 +11,10 @@
 │           ├── Nuguard.psm1         # Module root
 │           ├── 📁 Public            # Exported functions
 │           └── 📁 Private           # Internal functions
-├── 📁 tests
-│   ├── 📁 Unit                      # Unit tests
-│   └── 📁 Integration               # Integration tests
-├── 📁 docs                          # Documentation
 ├── 📁 build                         # Build scripts
+├── 📁 tests
+│   ├── 📁 Unit                      # Unit tests for private and public functions
+├── 📁 docs                          # Documentation
 └── 📁 .github
-    └── 📁 workflows                 # CI/CD pipelines# NuGuard Project Structure
+    └── 📁 workflows                # CI/CD pipelines
+```
