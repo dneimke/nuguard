@@ -55,23 +55,23 @@ If you prefer not to use DevContainers:
 
 ```powershell
 # Scan current directory
-Get-DotnetVulnerabilities .
+Invoke-NuguardScan .
 
 # Or scan with minimum severity
-Get-DotnetVulnerabilities . -MinimumSeverity High
+Invoke-NuguardScan . -MinimumSeverity High
 ```
 
 ## Common Usage Examples
 
 ```powershell
 # Scan a specific solution
-Get-DotnetVulnerabilities -ProjectPath "./MySolution.sln"
+Invoke-NuguardScan -ProjectPath "./MySolution.sln"
 
 # Export results to JSON
-Get-DotnetVulnerabilities . | ConvertTo-Json > vulnerabilities.json
+Invoke-NuguardScan . | ConvertTo-Json > vulnerabilities.json
 
 # Pipeline integration example
-$vulns = Get-DotnetVulnerabilities -MinimumSeverity Critical
+$vulns = Invoke-NuguardScan -MinimumSeverity Critical
 if ($vulns.Count -gt 0) {
     throw "Critical vulnerabilities found!"
 }
@@ -96,10 +96,26 @@ Create `nuguard-config.json` in your project root to customize behavior:
 
 ```json
 {
-  "minimumSeverity": "High",
-  "excludePackages": ["Test.*"],
-  "excludeProjects": ["*Test*"],
-  "nugetSources": ["https://api.nuget.org/v3/index.json"]
+    "version": "1.0",
+    "projectPaths": [
+        {
+            "name": "MyDotNetApp",
+            "path": "src/MyDotNetApp",
+            "type": "dotnet",
+            "minimumSeverity": "Moderate"
+        },
+        {
+            "name": "MyNodeApp",
+            "path": "src/MyNodeApp",
+            "type": "npm",
+            "minimumSeverity": "High"
+        }
+    ],
+    "defaultSettings": {
+        "minimumSeverity": "High",
+        "outputPath": "reports",
+        "failOnFindings": true
+    }
 }
 ```
 
