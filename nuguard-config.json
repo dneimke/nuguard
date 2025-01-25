@@ -2,8 +2,8 @@
     "version": "1.0",
     "projectPaths": [
         {
-            "name": "MyProject1",
-            "path": "src/MyProject1/MyProject1.csproj",
+            "name": "Matchlib.com",
+            "path": "C:\\repos\\azops\\PerformanceAnalyst",
             "type": "dotnet",
             "minimumSeverity": "High"
         },
