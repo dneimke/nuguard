@@ -1,5 +1,8 @@
 # Nuguard
 
+[![Build Status](https://github.com/dneimke/nuguard/workflows/CI/badge.svg)](https://github.com/dneimke/nuguard/actions)
+[![License](https://img.shields.io/github/license/dneimke/nuguard)](LICENSE)
+
 A powerful PowerShell module for scanning projects for vulnerable package dependencies across multiple ecosystems. While starting with .NET/NuGet, Nuguard provides a unified interface for vulnerability scanning across npm, NuGet, and other package providers. Get rich reporting, filtering, and integration features with a consistent experience regardless of your project type.
 
 ## Features
@@ -26,6 +29,7 @@ The fastest way to get started is using our pre-configured development container
 3. Click "Reopen in Container" when prompted, or run `Ctrl/Cmd + Shift + P` → "Dev Containers: Reopen in Container"
 
 The container comes with:
+
 - .NET SDK pre-installed
 - PowerShell and required modules
 - Pre-configured VS Code settings
@@ -36,6 +40,7 @@ The container comes with:
 If you prefer not to use DevContainers:
 
 1. Ensure prerequisites are installed:
+
    ```powershell
    dotnet --version     # Should be 6.0 or higher
    $PSVersionTable.PSVersion  # Should be 5.1 or higher
