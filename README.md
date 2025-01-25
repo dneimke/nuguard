@@ -1,7 +1,7 @@
 # Nuguard
 
-[Build Status](https://github.com/dneimke/nuguard/actions/workflows/test.yml/badge.svg)
-[License](https://img.shields.io/github/license/dneimke/nuguard)
+![Build Status](https://github.com/dneimke/nuguard/actions/workflows/test.yml/badge.svg)
+![License](https://img.shields.io/github/license/dneimke/nuguard)
 
 A powerful PowerShell module for scanning projects for vulnerable package dependencies across multiple ecosystems. While starting with .NET/NuGet, Nuguard provides a unified interface for vulnerability scanning across npm, NuGet, and other package providers. Get rich reporting, filtering, and integration features with a consistent experience regardless of your project type.
 
