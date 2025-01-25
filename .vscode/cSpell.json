@@ -1,0 +1,18 @@
+{
+  "version": "0.2",
+  "language": "en",
+  "words": [
+    "devcontainer",
+    "devcontainers",
+    "dotnettools",
+    "eamodio",
+    "esbenp",
+    "formulahendry",
+    "Nuguard",
+    "pwsh",
+    "dbaeumer"
+  ],
+  "ignoreWords": [],
+  "dictionaries": [],
+  "dictionaryDefinitions": []
+}

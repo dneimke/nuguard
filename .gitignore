@@ -6,9 +6,6 @@ reports/
 bin/
 obj/
 
-# VS Code settings
-.vscode/
-
 # Operating System Files
 .DS_Store
 Thumbs.db
