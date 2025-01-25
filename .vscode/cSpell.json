@@ -2,6 +2,7 @@
   "version": "0.2",
   "language": "en",
   "words": [
+    "dbaeumer",
     "devcontainer",
     "devcontainers",
     "dotnettools",
@@ -9,10 +10,10 @@
     "esbenp",
     "formulahendry",
     "Nuguard",
-    "pwsh",
-    "dbaeumer"
+    "preconfigured",
+    "pwsh"
   ],
-  "ignoreWords": [],
+  "ignoreWords": ["noninteractive"],
   "dictionaries": [],
   "dictionaryDefinitions": []
 }
