@@ -4,6 +4,7 @@
         "architecture": "/docs/architecture.md",
         "gettingStarted": "/docs/getting-started.md",
         "projectStructure": "/docs/project-structure.md",
+        "quickStart": "/docs/quick-start.md",
         "security": "/docs/security.md",
         "testing": "/docs/testing.md"
     }
