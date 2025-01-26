@@ -30,7 +30,7 @@ steps:
       Import-Module .\nuguard\src\Modules\Nuguard\Nuguard.psm1 -Force
 
       # Scan solution for vulnerabilities
-      $vulnerabilities = Get-PackageVulnerabilities -ProjectPath "$(System.DefaultWorkingDirectory)" -MinimumSeverity "High"
+      $vulnerabilities = Invoke-NuguardScan -ProjectPath "$(System.DefaultWorkingDirectory)" -MinimumSeverity "High"
 
       # Fail build if critical/high vulnerabilities found
       if ($vulnerabilities) {
@@ -59,8 +59,8 @@ steps:
 
 ```yaml
 variables:
-  minimumSeverity: 'High'  # Can be Critical, High, Moderate, Low, or All
-  projectPath: '**/*.csproj'  # Path pattern to scan
+  minimumSeverity: "High" # Can be Critical, High, Moderate, Low, or All
+  projectPath: "**/*.csproj" # Path pattern to scan
 ```
 
 ### 3. Advanced Configuration
@@ -69,48 +69,48 @@ You can enhance the pipeline by adding custom conditions or thresholds:
 
 ```yaml
 steps:
-- task: PowerShell@2
-  inputs:
-    targetType: 'inline'
-    script: |
-      # Set error threshold
-      $maxAllowedVulnerabilities = 0
+  - task: PowerShell@2
+    inputs:
+      targetType: "inline"
+      script: |
+        # Set error threshold
+        $maxAllowedVulnerabilities = 0
 
-      # Import and run NuGuard
-      Import-Module .\nuguard\src\Modules\Nuguard\Nuguard.psm1 -Force
-      $vulnerabilities = Get-PackageVulnerabilities -ProjectPath "$(projectPath)" -MinimumSeverity "$(minimumSeverity)"
+        # Import and run NuGuard
+        Import-Module .\nuguard\src\Modules\Nuguard\Nuguard.psm1 -Force
+        $vulnerabilities = Invoke-NuguardScan -ProjectPath "$(projectPath)" -MinimumSeverity "$(minimumSeverity)"
 
-      # Export results
-      $vulnerabilities | ConvertTo-Json | Out-File "vulnerability-report.json"
+        # Export results
+        $vulnerabilities | ConvertTo-Json | Out-File "vulnerability-report.json"
 
-      # Fail if threshold exceeded
-      if ($vulnerabilities.Count -gt $maxAllowedVulnerabilities) {
-        Write-Host "##vso[task.LogIssue type=error;]Vulnerability threshold exceeded!"
-        Write-Host "##vso[task.complete result=Failed;]"
-      }
+        # Fail if threshold exceeded
+        if ($vulnerabilities.Count -gt $maxAllowedVulnerabilities) {
+          Write-Host "##vso[task.LogIssue type=error;]Vulnerability threshold exceeded!"
+          Write-Host "##vso[task.complete result=Failed;]"
+        }
 ```
 
 ## Pipeline Variables
 
-| Variable | Description | Default Value | Required |
-|----------|-------------|---------------|----------|
-| `System.DefaultWorkingDirectory` | Root directory on build agent | _Set by Azure_ | No |
-| `solution` | Solution file pattern to scan | `**/*.sln` | No |
-| `buildPlatform` | Target build platform | `Any CPU` | No |
-| `buildConfiguration` | Build configuration | `Release` | No |
-| `minimumSeverity` | Minimum vulnerability severity | `High` | No |
-| `nuguardVersion` | Version of NuGuard to use | `latest` | No |
-| `failOnFindings` | Whether to fail build on findings | `true` | No |
-| `reportPath` | Path to save vulnerability report | `$(Build.ArtifactStagingDirectory)` | No |
+| Variable                         | Description                       | Default Value                       | Required |
+| -------------------------------- | --------------------------------- | ----------------------------------- | -------- |
+| `System.DefaultWorkingDirectory` | Root directory on build agent     | _Set by Azure_                      | No       |
+| `solution`                       | Solution file pattern to scan     | `**/*.sln`                          | No       |
+| `buildPlatform`                  | Target build platform             | `Any CPU`                           | No       |
+| `buildConfiguration`             | Build configuration               | `Release`                           | No       |
+| `minimumSeverity`                | Minimum vulnerability severity    | `High`                              | No       |
+| `nuguardVersion`                 | Version of NuGuard to use         | `latest`                            | No       |
+| `failOnFindings`                 | Whether to fail build on findings | `true`                              | No       |
+| `reportPath`                     | Path to save vulnerability report | `$(Build.ArtifactStagingDirectory)` | No       |
 
 ## Usage Example
 
 ```yaml
 // filepath: azure-pipelines.yml
 variables:
-  minimumSeverity: 'Critical'  # Only fail on Critical vulnerabilities
-  failOnFindings: true         # Fail pipeline if vulnerabilities found
-  reportPath: '$(Build.ArtifactStagingDirectory)/security/nuguard-report.json'
+  minimumSeverity: "Critical" # Only fail on Critical vulnerabilities
+  failOnFindings: true # Fail pipeline if vulnerabilities found
+  reportPath: "$(Build.ArtifactStagingDirectory)/security/nuguard-report.json"
 ```
 
 ## Error Codes
